@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #3b82f6;
+  --Special-blue: rgb(0, 103, 255);
+  --Special-blue-2: rgb(0, 94, 233);
+  --soft-bg: #eff6ff;
+  --accent: #1d4ed8; /*baraye btn ha va eleman ha*/
+}
+header {
+}
