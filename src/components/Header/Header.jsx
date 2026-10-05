@@ -1,97 +1,58 @@
-import { useState } from "react";
-import Logo from "./Logo";
-import { headerOptions } from "../../data/headerOptions";
+import shopping from "../../assets/shopping.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faShoppingCart,
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons";
+// import { useState } from "react";
 
-const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
+import Navbar from "./Navbar";
+import { faUser } from "@fortawesome/free-regular-svg-icons";
+// __________________________________
+function Header() {
   return (
-    <>
-      {/* ۱. نوار اصلی هدر (بالای صفحه - همیشه دیده می‌شود) */}
-      <header
-        dir="rtl"
-        className="w-full bg-white shadow-md sticky top-0 z-30 px-4 md:px-8 py-3 flex items-center justify-between"
-      >
-        {/* لوگو */}
-        <Logo />
-
-        {/* لینک‌های دسکتاپ (در موبایل مخفی هستند) */}
-        <nav className="hidden md:flex items-center gap-6">
-          {headerOptions.map((item, index) => (
-            <a
-              key={index}
-              href={item}
-              className="text-slate-700 hover:text-blue-600 transition-colors font-medium"
-            >
-              {item}
-            </a>
-          ))}
-        </nav>
-
-        {/* دکمه همبرگری برای باز کردن منو در موبایل */}
-        <button
-          onClick={() => setIsOpen(true)}
-          className="md:hidden text-slate-700 focus:outline-none"
-          aria-label="باز کردن منو"
-        >
-          {/* آیکون همبرگری ساده */}
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
-        </button>
-      </header>
-
-      {/* ۲. منوی موبایل (Sidebar که از راست باز می‌شود) */}
-      <div
-        className={`fixed top-0 right-0 h-full w-3/4 sm:w-64 bg-white z-50 shadow-2xl transition-transform duration-300 ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        {/* هدرِ داخل منوی موبایل (لوگو و دکمه بستن) */}
-        <div className="flex items-center justify-between p-4 border-b border-slate-100">
-          <span className="font-bold text-blue-900">منوی سایت</span>
-          <button
-            onClick={() => setIsOpen(false)}
-            className="p-2 text-slate-500 hover:text-red-500 font-bold"
-          >
-            ✕
-          </button>
+    <header
+      dir="rtl"
+      className=" flex flex-col px-5 xl:px-[150px] pt-2 bg-white border-b border-gray-300 "
+    >
+      <div className="flex items-center justify-between w-full">
+        <div className="shrink-0">
+          <Navbar />
         </div>
 
-        {/* لیست لینک‌ها در موبایل (با استفاده از map و headerOptions) */}
-        <nav className="mt-6 flex flex-col gap-4 px-6">
-          {headerOptions.map((item, index) => (
-            <a
-              key={index}
-              href={item.path || "#"}
-              onClick={() => setIsOpen(false)} // با کلیک روی هر لینک، منو بسته شود
-              className="text-slate-700 hover:text-blue-600 font-medium py-2 border-b border-slate-50"
-            >
-              {item.title}
-            </a>
-          ))}
-        </nav>
+        <div className="flex grow items-center bg-white rounded-xl px-3 mx-4">
+          <input
+            className="w-full bg-transparent py-2 outline-none text-right"
+            placeholder="جستجو"
+          />
+          <button>
+            <FontAwesomeIcon
+              className="cursor-pointer zarebinIcon"
+              icon={faMagnifyingGlass}
+            />
+          </button>
+        </div>
+        <div className="hidden md:flex items-center gap-4 ">
+          <div className="w-8 h-6 ">
+            <img src={shopping} alt="shopping" />
+          </div>
+          <button className="cursor-pointer enterBtn text-white px-6 py-2.5 text-sm rounded-full ">
+            ورود / ثبت نام
+          </button>
+        </div>
+        <div className="flex items-center gap-x-4 justify-center md:hidden ">
+          <FontAwesomeIcon className="text-gray-600" icon={faShoppingCart} />
+          <FontAwesomeIcon className="text-xl text-gray-600" icon={faUser} />
+        </div>
       </div>
 
-      {/* ۳. لایه تاریک پشت منو (Overlay) */}
-      {isOpen && (
-        <div
-          onClick={() => setIsOpen(false)}
-          className="fixed inset-0 bg-black/50 z-40 backdrop-blur-xs transition-all"
-        ></div>
-      )}
-    </>
+      <div className="flex items-center justify-between w-full mt-6 text-sm">
+        <nav className="hidden md:flex gap-x-6 text-gray-600 pb-4  pr-4">
+          <a href="#">خانه</a>
+          <a href="#">پیگیری سفارش</a>
+        </nav>
+      </div>
+    </header>
   );
-};
-
+}
 export default Header;

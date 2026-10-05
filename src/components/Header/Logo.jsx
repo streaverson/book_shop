@@ -1,5 +1,5 @@
 const Logo = function () {
-  return <div className="font-bold text-xl">Logo</div>;
+  return <h3 className="font-black hidden md:flex text-xl logo">نام سایت</h3>;
 };
 
 export default Logo;
