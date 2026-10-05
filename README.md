@@ -1,16 +1,41 @@
-# React + Vite
+# 📚 BookStream - Modern Bookstore E-Commerce
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive, and performance-focused bookstore application built with React, state management using Zustand, and styled with Tailwind CSS.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Responsive Design:** Fully optimized for desktop, tablet, and mobile devices.
+- **Global State Management:** Seamless cart and user data handling using [Zustand](https://zustand-demo.pmnd.rs/).
+- **Modern UI:** Clean, minimalist interface styled with Tailwind CSS.
+- **Interactive Components:** Custom-built carousel and product cards.
+- **Performance First:** Optimized rendering and minimal re-renders.
 
-## React Compiler
+## 🛠 Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend:** React.js
+- **State Management:** Zustand
+- **Styling:** Tailwind CSS
+- **Icons:** FontAwesome / Lucide React
+- **Build Tool:** Vite
 
-## Expanding the ESLint configuration
+## 📦 Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+   git clone https://github.com/your-username/bookstream.git
+
+   cd bookstream
+
+   npm install
+
+   npm run dev
+
+
+```
