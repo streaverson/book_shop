@@ -1,18 +1,33 @@
-// import { useState } from "react";
 import Header from "./components/Header/Header";
 import HeroSection from "./components/Hero/HeroSection";
-import ProductsSection from "./components/Main/ProductsSection";
-//
+
+import BooksSection from "./components/Main/books/booksSection";
+import AuthorsSection from "./components/Main/Authors/AuthorsSection";
+
+import Footer from "./components/Footer/Footer";
+
+import { newArrivals, bestSellers, discountedBooks } from "./data/books";
+
 function App() {
   return (
     <>
       <Header />
-      <HeroSection />
-      <ProductsSection />
+
+      <main>
+        <HeroSection />
+
+        <BooksSection title="جدیدترین‌ها" books={newArrivals} />
+
+        <BooksSection title="محبوب‌ترین‌ها" books={bestSellers} />
+
+        <BooksSection title="تخفیف‌های ویژه" books={discountedBooks} />
+
+        <AuthorsSection title="نویسندگان منتخب" />
+      </main>
+
+      <Footer />
     </>
   );
 }
-
-// یادت باشه برای سبد خرید بری سراغ store.jsx (zustand ). ***
 
 export default App;

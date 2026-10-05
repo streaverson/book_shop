@@ -1,58 +1,75 @@
 import shopping from "../../assets/shopping.svg";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import {
   faShoppingCart,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
-// import { useState } from "react";
+
+import { faUser } from "@fortawesome/free-regular-svg-icons";
 
 import Navbar from "./Navbar";
-import { faUser } from "@fortawesome/free-regular-svg-icons";
-// __________________________________
+
 function Header() {
   return (
-    <header
-      dir="rtl"
-      className=" flex flex-col px-5 xl:px-[150px] pt-2 bg-white border-b border-gray-300 "
-    >
-      <div className="flex items-center justify-between w-full">
-        <div className="shrink-0">
+    <header dir="rtl" className="siteHeader">
+      <div className="siteHeaderTop">
+        <div className="headerNav">
           <Navbar />
         </div>
 
-        <div className="flex grow items-center bg-white rounded-xl px-3 mx-4">
+        <div className="headerSearch">
           <input
-            className="w-full bg-transparent py-2 outline-none text-right"
-            placeholder="جستجو"
+            type="search"
+            placeholder="عنوان کتاب، نویسنده یا ناشر..."
+            aria-label="جستجوی کتاب"
           />
-          <button>
-            <FontAwesomeIcon
-              className="cursor-pointer zarebinIcon"
-              icon={faMagnifyingGlass}
-            />
+
+          <button type="button" aria-label="جستجو">
+            <FontAwesomeIcon icon={faMagnifyingGlass} aria-hidden="true" />
           </button>
         </div>
-        <div className="hidden md:flex items-center gap-4 ">
-          <div className="w-8 h-6 ">
-            <img src={shopping} alt="shopping" />
-          </div>
-          <button className="cursor-pointer enterBtn text-white px-6 py-2.5 text-sm rounded-full ">
+
+        <div className="headerDesktopActions items-center">
+          <button type="button" className="headerCart" aria-label="سبد خرید">
+            <img src={shopping} alt="" />
+
+            <span>سبد خرید</span>
+          </button>
+
+          <button type="button" className="hidden md:inline headerLogin">
             ورود / ثبت نام
           </button>
+          <button type="button" className="inline md:hidden headerLoginMobile">
+            <FontAwesomeIcon icon={faUser} aria-hidden="true" />
+          </button>
         </div>
-        <div className="flex items-center gap-x-4 justify-center md:hidden ">
-          <FontAwesomeIcon className="text-gray-600" icon={faShoppingCart} />
-          <FontAwesomeIcon className="text-xl text-gray-600" icon={faUser} />
-        </div>
+
+        {/* <div className="headerMobileActions">
+          <button type="button" aria-label="سبد خرید">
+            <FontAwesomeIcon icon={faShoppingCart} aria-hidden="true" />
+          </button>
+
+          <button type="button" aria-label="حساب کاربری">
+            <FontAwesomeIcon icon={faUser} aria-hidden="true" />
+          </button>
+        </div> */}
       </div>
 
-      <div className="flex items-center justify-between w-full mt-6 text-sm">
-        <nav className="hidden md:flex gap-x-6 text-gray-600 pb-4  pr-4">
+      <div className="headerBottom">
+        <nav className="headerLinks" aria-label="منوی اصلی">
           <a href="#">خانه</a>
+
           <a href="#">پیگیری سفارش</a>
+
+          <a href="#">کتاب‌ها</a>
+
+          <a href="#">نویسندگان</a>
         </nav>
       </div>
     </header>
   );
 }
+
 export default Header;

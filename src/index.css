@@ -10,6 +10,7 @@
   --brand-ink: #fff;
   --gold: #e8a91d;
 }
+
 @font-face {
   font-family: "Vazir";
   src:
@@ -18,11 +19,27 @@
     url("./assets/fonts/Vazir.woff") format("woff");
 }
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
 body {
+  margin: 0;
   font-family: "Vazir", sans-serif !important;
   overflow-x: hidden;
-
   background-color: var(--bg);
+  color: var(--ink);
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
 }
 
 header {
@@ -32,6 +49,7 @@ header {
 .enterBtn {
   background-color: var(--brand);
 }
+
 .zarebinIcon {
   color: var(--ink);
 }
@@ -49,6 +67,10 @@ header {
   color: var(--brand);
 }
 
+/* =========================================================
+   HERO
+========================================================= */
+
 .heroTitle {
   font-size: clamp(42px, 7vw, 60px);
   font-weight: 900;
@@ -58,14 +80,15 @@ header {
 }
 
 .heroDescription {
-  margin: 20px 0 0 0;
+  margin: 20px 0 0;
   color: var(--muted);
 }
-/* .heroSection {
+
+.heroSection {
   align-items: center;
   justify-content: center;
   gap: 30px;
-} */
+}
 
 .heroSection div {
   padding: 48px 0 24px;
@@ -87,7 +110,6 @@ header {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   transform: translateY(0) rotate(0) scale(1);
-
   text-align: center;
   animation: bookActive 2s ease-in-out alternate;
   align-items: center;
@@ -97,9 +119,9 @@ header {
   font-size: clamp(0.8rem, 5vw, 1rem);
   position: relative;
 }
+
 .heroBook::before {
   top: 0;
-
   position: absolute;
   background: #e9e6e0;
   content: "";
@@ -111,7 +133,7 @@ header {
 }
 
 .heroBtn {
-  margin: 30px 0 0 0;
+  margin: 30px 0 0;
   background-color: var(--brand);
   color: var(--brand-ink);
   font-weight: 700;
@@ -122,141 +144,1000 @@ header {
   padding: 0 24px;
 }
 
-/* .heroBookHovered {
-
-} */
-
-/* @keyframes bookActive {
-  0% {
-    z-index: 1;
-    transform: translateY(0) rotate(0) scale(1);
-  }
-  60% {
-  }
-  100% {
-    z-index: 1;
-    transform: translateY(0) rotate(0) scale(1);
-  }
-} */
-
 .heroBookActive {
   z-index: 99;
   transform: translateY(-20px) rotate(-30deg) scale(1.2);
 }
 
-/* __________________________________ PRODUCTS SECTION __________________________________ */
+@keyframes bookActive {
+  0% {
+    z-index: 1;
+    transform: translateY(0) rotate(0) scale(1);
+  }
 
-.productCard {
-  width: 225px;
-  height: 100%;
-  box-shadow: 0 12px 40px color-mix(var(--ink) 20%, transparent);
-  border-radius: 8px;
-  line-height: 1.4rem;
-}
-.productBody {
-  height: auto;
+  100% {
+    z-index: 1;
+    transform: translateY(0) rotate(0) scale(1);
+  }
 }
 
-.productImage img {
+/* =========================================================
+   SITE HEADER
+========================================================= */
+
+.siteHeader {
   width: 100%;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  padding-inline: 1.25rem;
+  background: var(--surface);
+  border-bottom: 1px solid color-mix(in srgb, var(--muted) 12%, transparent);
 }
 
-.bookTitle {
-  color: var(--ink);
-  font-weight: 900;
+.siteHeaderTop {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
-.bookPrice {
+
+.headerNav {
+  flex-shrink: 0;
+}
+
+.headerSearch {
+  flex: 1;
+  min-width: 180px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0 0.35rem 0 0.5rem;
+  border: 1px solid color-mix(in srgb, var(--muted) 16%, transparent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--muted) 4%, var(--surface));
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.headerSearch:focus-within {
+  border-color: color-mix(in srgb, var(--brand) 50%, transparent);
+  background: var(--surface);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 10%, transparent);
+}
+
+.headerSearch input {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.82rem;
+}
+
+.headerSearch input::placeholder {
+  color: var(--muted);
+}
+
+.headerSearch button {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 9px;
+  background: var(--brand);
+  color: var(--brand-ink);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.headerSearch button:hover {
+  filter: brightness(1.08);
+  transform: scale(1.04);
+}
+
+.headerDesktopActions {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-shrink: 0;
+}
+
+.headerCart {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.7rem;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.headerCart img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+.headerLogin {
+  height: 40px;
+  padding-inline: 1.15rem;
+  border: 0;
+  border-radius: 10px;
+  background: var(--brand);
+  color: var(--brand-ink);
+  font-family: inherit;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+.headerLoginMobile {
+  cursor: pointer;
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  background: var(--brand);
+  color: var(--brand-ink);
+  border-radius: 12px;
+  border: 1px solid var(--brand);
+  font-weight: 700;
+}
+
+.headerLogin:hover {
+  filter: brightness(1.07);
+  transform: translateY(-1px);
+}
+
+.headerMobileActions {
+  display: none;
+}
+
+.headerBottom {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid color-mix(in srgb, var(--muted) 7%, transparent);
+}
+
+.headerLinks {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  padding-inline-start: 0.25rem;
+}
+
+.headerLinks a {
+  position: relative;
+  padding: 0.65rem 0;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.headerLinks a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--brand);
+  transition: width 0.25s ease;
+}
+
+.headerLinks a:hover {
   color: var(--brand);
 }
 
-.offPrice {
-  color: var(--muted);
-  font-size: 0.9rem;
+.headerLinks a:hover::after {
+  width: 100%;
 }
 
-/* _____________ product card footer ______________ */
+/* =========================================================
+   CAROUSEL
+========================================================= */
 
+.carouselSection {
+  width: 100%;
+  min-width: 0;
+  margin: 3.5rem 0;
+  padding-inline: 1.25rem;
+}
+
+.carouselHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.carouselHeading {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.carouselAccent {
+  width: 5px;
+  height: 25px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: var(--brand);
+}
+
+.productSectionTitle {
+  margin: 0;
+  color: var(--brand);
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.carouselHeaderActions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-shrink: 0;
+}
+
+.carouselViewMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.76rem;
+  font-weight: 600;
+  transition:
+    color 0.2s ease,
+    gap 0.2s ease;
+}
+
+.carouselViewMore:hover {
+  color: var(--brand);
+  gap: 0.55rem;
+}
+
+.carouselViewMore svg {
+  font-size: 0.62rem;
+}
+
+.carouselNav {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.carouselNavBtn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid color-mix(in srgb, var(--muted) 17%, transparent);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.carouselNavBtn:hover {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: var(--brand-ink);
+  transform: translateY(-2px);
+}
+
+.carouselViewport {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0.4rem 0.25rem 0.9rem;
+}
+
+.carouselTrack {
+  display: flex;
+  width: max-content;
+  gap: 1.25rem;
+  will-change: transform;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.carouselItem {
+  flex: 0 0 auto;
+}
+
+/* ========================================================= PRODUCT CARD ========================================================= */
+.productCard {
+  width: 250px;
+  max-width: 100%;
+  height: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid color-mix(in srgb, var(--muted) 12%, transparent);
+  border-radius: 12px;
+  line-height: 1.4rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.productCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.09);
+} /* ========================================================= IMAGE ========================================================= */
+.productImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #f4f4f4;
+  flex-shrink: 0;
+}
+.productImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+.productCard:hover .productImage {
+  transform: scale(1.035);
+} /* ========================================================= WISHLIST ========================================================= */
+.productWishlist {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--muted);
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+.productWishlist:hover {
+  color: var(--brand);
+  transform: scale(1.05);
+} /* ========================================================= BODY ========================================================= */
+.productBody {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+} /* ========================================================= META ========================================================= */
+.productMeta {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.productInfo {
+  min-width: 0;
+  flex: 1;
+}
 .productTitle {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
   color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .productPublisher {
-  font-size: 0.8rem;
+  width: 100%;
+  min-width: 0;
+  margin: 3px 0 0;
   color: var(--muted);
+  font-size: 0.76rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+.productPublisher span {
+  margin-left: 3px;
+} /* ========================================================= SCORE ========================================================= */
+.bookScore {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+.bookScore svg {
+  color: var(--gold);
+  font-size: 0.7rem;
+}
+.bookScore small {
+  font-size: 0.65rem;
+} /* ========================================================= FOOTER ========================================================= */
+.productFooter {
+  width: 100%;
+  min-width: 0;
+  margin-top: auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
+} /* ========================================================= PRICE ========================================================= */
+.productPricing {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+}
+.offPrice {
+  display: block;
+  width: 100%;
+  margin: 0 0 2px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bookPrice {
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  color: var(--brand);
+  white-space: nowrap;
+}
+.bookPrice strong {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.95rem;
+}
+.toman {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 0.65rem;
+} /* ========================================================= ADD TO CART ========================================================= */
 .productShopBtn {
-  background-color: var(--brand);
+  flex: 0 0 38px;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  border: 0;
+  border-radius: 9px;
+
+  background: var(--brand);
   color: var(--brand-ink);
-  width: 2rem;
-  height: 2rem;
-  border-radius: 8px;
-  border: 1px solid transparent;
+
   cursor: pointer;
-  transition: all 0.1s;
+
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+.productShopBtn svg {
+  width: 14px;
+  height: 14px;
 }
 
 .productShopBtn:hover {
+  filter: brightness(1.08);
   transform: translateY(-1px);
 }
-.productLikeBtn {
-  width: 2rem;
-  cursor: pointer;
-  height: 2rem;
+
+.productShopBtn:active {
+  transform: scale(0.95);
+} /* ========================================================= TEXT ========================================================= */
+.addToCartText {
+  display: none;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+} /* ========================================================= MOBILE ========================================================= */
+@media (max-width: 600px) {
+  .productCard {
+    width: 210px;
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  .productBody {
+    padding: 10px;
+  }
+  .productMeta {
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .productTitle {
+    font-size: 0.88rem;
+  }
+  .productPublisher {
+    font-size: 0.7rem;
+  }
+  .bookScore {
+    font-size: 0.67rem;
+  }
+  .bookPrice strong {
+    font-size: 0.85rem;
+  }
+  .toman {
+    font-size: 0.6rem;
+  } /* MOBILE CART BUTTON + + متن */
+  .productShopBtn {
+    flex: 0 0 34px;
+
+    width: 34px;
+    height: 34px;
+
+    border-radius: 8px;
+  }
+  .addToCartText {
+    display: inline;
+    max-width: 105px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .productWishlist {
+    width: 32px;
+    height: 32px;
+  }
+} /* ========================================================= VERY SMALL SCREENS ========================================================= */
+@media (max-width: 360px) {
+  .productCard {
+    width: 190px;
+  }
+  .productMeta {
+    gap: 5px;
+  }
+  .bookScore {
+    display: none;
+  }
+  .productFooter {
+    gap: 5px;
+  }
+  .bookPrice strong {
+    font-size: 0.8rem;
+  }
+  .productShopBtn {
+    max-width: 130px;
+    padding-inline: 8px;
+  }
+  .addToCartText {
+    max-width: 92px;
+    font-size: 0.62rem;
+  }
+}
+/* =========================================================
+   AUTHORS
+========================================================= */
+
+.authorsCarousel .carouselViewport {
+  padding-top: 0.5rem;
+}
+
+.authorCard {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--muted) 12%, transparent);
+  border-radius: 16px;
+  background: var(--surface);
+  text-decoration: none;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.authorCard:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--brand) 28%, transparent);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+}
+
+.authorAvatarWrapper {
+  width: 72px;
+  height: 72px;
+  padding: 3px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--brand) 14%, transparent);
+}
+
+.authorImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.authorInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  text-align: center;
+}
+
+.authorName {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 800;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.authorBookCount {
   color: var(--muted);
-  transition: all 0.1s;
-  border-radius: 8px;
+  font-size: 0.66rem;
+}
+
+/* =========================================================
+   OFF LABEL
+========================================================= */
+
+.offLabel {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 5;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--brand);
+  color: var(--brand-ink);
+  line-height: 1;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.offLabel strong {
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.offLabel span {
+  margin-top: 0.2rem;
+  font-size: 0.53rem;
+  font-weight: 600;
+}
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1280px) {
+  .siteHeader {
+    padding-inline: 150px;
+  }
+
+  .carouselSection {
+    padding-inline: 150px;
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+/* =========================================================
+   PRODUCT ACTIONS
+========================================================= */
+
+.productActions {
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  min-width: 0;
+}
+
+/* =========================================================
+   LIKE BUTTON
+========================================================= */
+
+.productLikeBtn {
+  width: 38px;
+  height: 38px;
+
+  flex: 0 0 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid color-mix(in srgb, var(--muted) 16%, transparent);
+
+  border-radius: 9px;
+
+  background: transparent;
+  color: var(--muted);
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.productLikeBtn svg {
+  width: 14px;
+  height: 14px;
 }
 
 .productLikeBtn:hover {
-  transform: translateY(-1px);
-  padding-top: 0.1rem;
   color: var(--brand);
-  border: 1px solid var(--brand);
+
+  border-color: color-mix(in srgb, var(--brand) 40%, transparent);
+
+  background: color-mix(in srgb, var(--brand) 6%, transparent);
+
+  transform: translateY(-1px);
 }
 
-.offPrice {
-  padding: 0;
-  font-weight: 600;
-  margin-left: 1rem;
-  font-size: 0.8rem;
-}
+/* =========================================================
+   ADD TO CART
+========================================================= */
 
-.toman {
-  font-size: 0.68rem;
-  /* اگه میخوای رنگ متن تومان آبی نباشه :  */
-  color: var(--muted);
-  /* ______________________________ */
-  /* اگه میخوای رنگ متن تومان آبی باشه :  */
-  /* color: var(--brand); */
-}
+.productShopBtn {
+  width: 38px;
+  height: 38px;
 
-/* ______________Off Label____________________ */
+  flex: 0 0 38px;
 
-.offLabel {
-  color: var(--brand-ink);
-  font-weight: 500;
-  border-bottom: 23px solid var(--brand);
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  height: 0;
-  font-size: 0.9rem;
-  width: clamp(200px, 100px);
-  top: 20px;
-  right: -27px;
-
-  transform: rotate(45deg);
-}
-.bookScore {
-  gap: 3px;
-  align-items: start;
   display: flex;
-  color: var(--muted);
-  font-size: 0.75rem;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 9px;
+
+  background: var(--brand);
+  color: var(--brand-ink);
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  transition:
+    width 0.2s ease,
+    filter 0.2s ease,
+    transform 0.2s ease;
 }
 
-/* )______________________Carousel __________________( */
+.productShopBtn svg {
+  flex: 0 0 auto;
 
-.carousel-track {
-  transition: transform 0.4s ease;
+  width: 14px;
+  height: 14px;
+}
+
+.productShopBtn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.productShopBtn:active {
+  transform: scale(0.95);
+}
+
+/* =========================================================
+   CART TEXT
+========================================================= */
+
+.addToCartText {
+  display: none;
+
+  white-space: nowrap;
+
+  font-size: 0.68rem;
+  font-weight: 700;
+
+  line-height: 1;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .productShopBtn {
+    width: auto;
+    min-width: 0;
+
+    flex: 0 1 auto;
+
+    padding-inline: 10px;
+  }
+
+  .addToCartText {
+    display: inline;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .productCard {
+    width: 210px;
+  }
+
+  .productBody {
+    padding: 10px;
+  }
+
+  .productMeta {
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .productTitle {
+    font-size: 0.88rem;
+  }
+
+  .productPublisher {
+    font-size: 0.7rem;
+  }
+
+  .bookScore {
+    font-size: 0.67rem;
+  }
+
+  .bookPrice strong {
+    font-size: 0.85rem;
+  }
+
+  .toman {
+    font-size: 0.6rem;
+  }
+
+  .productActions {
+    gap: 5px;
+  }
+
+  .productLikeBtn {
+    width: 34px;
+    height: 34px;
+
+    flex-basis: 34px;
+
+    border-radius: 8px;
+  }
+
+  .productShopBtn {
+    width: auto;
+    min-width: 0;
+
+    height: 34px;
+
+    flex: 0 1 auto;
+
+    padding-inline: 8px;
+
+    border-radius: 8px;
+  }
+
+  .productLikeBtn svg,
+  .productShopBtn svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .addToCartText {
+    font-size: 0.61rem;
+  }
+}
+
+/* =========================================================
+   VERY SMALL SCREENS
+========================================================= */
+
+@media (max-width: 360px) {
+  .bookScore {
+    display: none;
+  }
+
+  .productFooter {
+    gap: 5px;
+  }
+
+  .productActions {
+    gap: 4px;
+  }
+
+  .productLikeBtn {
+    width: 32px;
+    height: 32px;
+
+    flex-basis: 32px;
+  }
+
+  .productShopBtn {
+    height: 32px;
+    padding-inline: 7px;
+  }
+
+  .addToCartText {
+    font-size: 0.57rem;
+  }
 }
