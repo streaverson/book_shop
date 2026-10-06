@@ -1,5 +1,5 @@
 import ProductCard from "./ProductCard";
-import Carousel from "../Carousel/Carousel";
+import Carousel from "../Carousel";
 
 function BooksSection({ title, books }) {
   if (!books?.length) {

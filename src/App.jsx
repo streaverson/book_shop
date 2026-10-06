@@ -2,7 +2,7 @@ import Header from "./components/Header/Header";
 import HeroSection from "./components/Hero/HeroSection";
 
 import BooksSection from "./components/Main/books/BooksSection";
-import AuthorsSection from "./components/Main/Authors/AuthorsSection";
+import AuthorsSection from "./components/Main/authors/AuthorsSection";
 
 import Footer from "./components/Footer/Footer";
 

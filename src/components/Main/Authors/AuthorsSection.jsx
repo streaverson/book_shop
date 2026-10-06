@@ -1,5 +1,5 @@
 import AuthorCard from "./AuthorCard";
-import Carousel from "../Carousel/Carousel";
+import Carousel from "../Carousel";
 
 import { authors } from "../../../data/authors";
 
